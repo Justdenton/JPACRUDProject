@@ -1,0 +1,3 @@
+rootProject.name = 'FraudIndicator'
+
+includeFlat 'JPAFraudIndicator' 
