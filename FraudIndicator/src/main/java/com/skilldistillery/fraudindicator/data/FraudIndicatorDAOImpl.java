@@ -28,9 +28,9 @@ public class FraudIndicatorDAOImpl implements FraudIndicatorDAO {
 
 	@Override
 	public List<FraudIndicator> findAll() {
-
+		String jpql = "SELECT fi FROM FraudIndicator fi";
 		
-		return null;
+		return em.createQuery(jpql, FraudIndicator.class).getResultList();
 	}
 
 	@Override

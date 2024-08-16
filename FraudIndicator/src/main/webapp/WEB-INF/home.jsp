@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
     
 <!DOCTYPE html>
 <html>
@@ -12,7 +12,10 @@
 </head>
 
 <body>
-	<h1>TEST</h1>
+	<h1>TEST - </h1>
+
+	${allIndicators}
+
 
 </body>
 
