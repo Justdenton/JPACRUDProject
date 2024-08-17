@@ -44,7 +44,7 @@ class FraudIndicatorTest {
 	@Test
 	void test_FraudIndicator_entity_mappings() {
 		assertNotNull(fi);
-		assertEquals("Fraud indicator 1.", fi.getDescription());
+		assertEquals("The vehicle was recovered stripped or burned, with no evidence of forced entry.", fi.getDescription());
 	
 	}
 
