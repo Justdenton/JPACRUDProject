@@ -9,25 +9,23 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-
 @Entity
 @Table(name = "fraud_indicator")
 public class FraudIndicator {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String description;
 	private String category;
-	@Column(name = "image_url")
-	private String imageURL;
+	// @Column(name = "image_url")
+	// private String imageURL;
 	@Column(name = "create_date")
 	private LocalDateTime createDate;
 	@Column(name = "last_update")
 	private LocalDateTime updateDate;
-	
-	
+
 	public FraudIndicator() {
 		super();
 	}
@@ -56,13 +54,13 @@ public class FraudIndicator {
 		this.category = category;
 	}
 
-	public String getImageURL() {
-		return imageURL;
-	}
-
-	public void setImageURL(String imageURL) {
-		this.imageURL = imageURL;
-	}
+//	public String getImageURL() {
+//		return imageURL;
+//	}
+//
+//	public void setImageURL(String imageURL) {
+//		this.imageURL = imageURL;
+//	}
 
 	public LocalDateTime getCreateDate() {
 		return createDate;
@@ -84,13 +82,9 @@ public class FraudIndicator {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("FraudIndicator [id=").append(id).append(", description=").append(description)
-				.append(", category=").append(category).append(", imageURL=").append(imageURL).append(", createDate=")
-				.append(createDate).append(", updateDate=").append(updateDate).append("]");
+				.append(", category=").append(category).append(", createDate=").append(createDate)
+				.append(", updateDate=").append(updateDate).append("]");
 		return builder.toString();
 	}
-	
-	
-	
-	
 
 }
