@@ -11,8 +11,8 @@ The JPACRUDProject is a Java web application that demonstrates fundamental CRUD 
 ## Technologies Used
 
 - **Java**
-- **STS**
-- **JPA**:
+- **STS**: Spring Tool Suite
+- **JPA**: Java Persistence API
 - **MySQL, MySQL Workbench**
 - **AWS**
 - **git, GitHub**
