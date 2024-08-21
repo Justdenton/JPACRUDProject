@@ -33,12 +33,13 @@
             <button type="submit" class="btn btn-primary mt-2">Search by ID</button>
         </form>
 
-        <!-- Keyword Form -->
-        <!-- <form action="keywordresult.do" method="get" class="mt-4">
-            <label for="keyword">Search by keyword:</label>
-            <input type="text" id="keyword" name="keyword" class="form-control">
-            <button type="submit" class="btn btn-primary mt-2">Search by Keyword</button>
-        </form> -->
+      	<!-- Keyword Form (attempting to direct to result.jsp) -->
+		<form action="searchByKeyword.do" method="get" class="mt-4">
+   			<label for="keyword">Search by keyword:</label>
+    		<input type="text" id="keyword" name="keyword" class="form-control">
+    		<button type="submit" class="btn btn-primary mt-2">Search by Keyword</button>
+		</form>
+       
 
         <p class="mt-4">With millions of insurance claims being processed annually, insurance fraud remains a pervasive issue that poses significant challenges in the United States.</p>
         

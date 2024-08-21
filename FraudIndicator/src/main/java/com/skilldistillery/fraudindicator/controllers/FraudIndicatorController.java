@@ -31,10 +31,24 @@ public class FraudIndicatorController {
 		if (fraudIndicator != null) {
 			model.addAttribute("searchResults", List.of(fraudIndicator));
 		} else {
-			model.addAttribute("searchResults", List.of());
+			model.addAttribute("error", "No indicator found with ID: " + id);
 		}
+	
 		return "result";
+	} 
+	// SEARCH BY KEYWORD
+	@RequestMapping(path = "searchByKeyword.do", method = RequestMethod.GET)
+	public String searchByKeyword(@RequestParam("keyword") String keyword, Model model) {
+	    List<FraudIndicator> fraudIndicator = fiDao.findByKeyword(keyword);
+	    if (fraudIndicator.isEmpty()) {
+	    	model.addAttribute("error", "No indicator found with keyword: " + keyword);
+	    } else { 
+	    	model.addAttribute("searchResults", fraudIndicator);
+	    }
+	    
+	    return "result";
 	}
+	
 
 	// LIST (ALL)
 	@RequestMapping(path = "list.do", method = RequestMethod.GET)

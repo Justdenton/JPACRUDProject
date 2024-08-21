@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %> 
+
+<%-- <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>	<!-- Should fix date formatting -->
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %> --%>
 
 <!DOCTYPE html>
 <html>
@@ -24,12 +27,22 @@
                     <th>Actions</th>
                 </tr>
             </thead>
+            
+            <!-- 
+            <p>Formatted Date (6): <fmt:formatDate type = "both" 
+         		dateStyle = "long" timeStyle = "long" value = "${now}" /></p>
+             -->
+            
+            
             <tbody>
                 <c:forEach var="fraudIndicator" items="${allIndicators}">
                     <tr>
                         <td>${fraudIndicator.description}</td>
                         <td>${fraudIndicator.category}</td>
                         <td>${fraudIndicator.updateDate}</td>
+                        <%-- <td>
+                        	<fmt:formatDate type="both" dateStyle="long" timeStyle="long" value="${fraudIndicator.updateDate}" />
+                        </td> --%>
                         <td>
                             <a class="btn btn-info btn-sm" href="update.do?id=${fraudIndicator.id}">Update</a>
                             <form action="delete.do" method="post" style="display:inline;">

@@ -12,6 +12,6 @@ public interface FraudIndicatorDAO {
 	FraudIndicator update(int fraudId, FraudIndicator fi);
 	boolean deleteById(int fraudId);
 
-	// List<FraudIndicator> findByKeyword(String description);
+	List<FraudIndicator> findByKeyword(String keyword);
 
 }

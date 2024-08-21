@@ -1,9 +1,13 @@
 package com.skilldistillery.fraudindicator.data;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+
 import org.springframework.stereotype.Service;
+
 import com.skilldistillery.fraudindicator.entities.FraudIndicator;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
@@ -14,12 +18,20 @@ public class FraudIndicatorDAOImpl implements FraudIndicatorDAO {
 
 	@PersistenceContext
 	private EntityManager em;
- 
+	
 	@Override
 	public FraudIndicator findById(int fraudId) {
 		return em.find(FraudIndicator.class, fraudId);
 	}
 
+	@Override
+	public List<FraudIndicator> findByKeyword(String keyword) {
+		String jpql = "SELECT fi FROM FraudIndicator fi WHERE fi.description LIKE :keyword";
+		return em.createQuery(jpql, FraudIndicator.class)
+				.setParameter("keyword", "%" + keyword + "%").getResultList();
+	}
+	
+	
 	@Override
 	public List<FraudIndicator> findAll() {
 		String jpql = "SELECT fi FROM FraudIndicator fi";
@@ -54,5 +66,6 @@ public class FraudIndicatorDAOImpl implements FraudIndicatorDAO {
 		}
 		return false;
 	}
+
 
 }
