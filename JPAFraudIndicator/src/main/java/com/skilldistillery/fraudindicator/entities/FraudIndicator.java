@@ -1,6 +1,7 @@
 package com.skilldistillery.fraudindicator.entities;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -50,7 +51,7 @@ public class FraudIndicator {
 		return category;
 	}
 
-	public void setCategory(String category) {		
+	public void setCategory(String category) {
 		this.category = category;
 	}
 
@@ -77,6 +78,22 @@ public class FraudIndicator {
 	public void setUpdateDate(LocalDateTime updateDate) {
 		this.updateDate = updateDate;
 	}
+
+//	public Date getCreateDate() {
+//		return createDate;
+//	}
+//
+//	public void setCreateDate(Date createDate) {
+//		this.createDate = createDate;
+//	}
+//
+//	public Date getUpdateDate() {
+//		return updateDate;
+//	}
+//
+//	public void setUpdateDate(Date updateDate) {
+//		this.updateDate = updateDate;
+//	}
 
 	@Override
 	public String toString() {

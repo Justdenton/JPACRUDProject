@@ -2,12 +2,16 @@ package com.skilldistillery.fraudindicator.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import java.time.LocalDateTime;
+import java.util.Date;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -59,6 +63,8 @@ class FraudIndicatorTest {
 		FraudIndicator newFi = new FraudIndicator();
 		newFi.setDescription("New fraudulent indicator");
 		newFi.setCategory("auto");
+//		newFi.setCreateDate(Date.now());
+//		newFi.setUpdateDate(LocalDateTime.now());
 		newFi.setCreateDate(LocalDateTime.now());
 		newFi.setUpdateDate(LocalDateTime.now());
 
@@ -69,7 +75,5 @@ class FraudIndicatorTest {
 		assertNotNull(createdFi);
 		assertEquals("New fraudulent indicator", createdFi.getDescription());
 	}
-	
-	
 
 }

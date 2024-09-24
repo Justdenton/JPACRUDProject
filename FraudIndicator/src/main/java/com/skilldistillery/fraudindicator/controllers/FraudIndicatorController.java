@@ -1,12 +1,14 @@
 package com.skilldistillery.fraudindicator.controllers;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import com.skilldistillery.fraudindicator.data.FraudIndicatorDAO;
 import com.skilldistillery.fraudindicator.entities.FraudIndicator;
 
@@ -21,7 +23,7 @@ public class FraudIndicatorController {
 	public String home(Model model) {
 		List<FraudIndicator> allFi = fiDao.findAll();
 		model.addAttribute("allIndicators", allFi);
-		return "home"; 
+		return "home";
 	}
 
 	// SEARCH BY ID
@@ -33,22 +35,34 @@ public class FraudIndicatorController {
 		} else {
 			model.addAttribute("error", "No indicator found with ID: " + id);
 		}
-	
+
 		return "result";
-	} 
+	}
+
 	// SEARCH BY KEYWORD
 	@RequestMapping(path = "searchByKeyword.do", method = RequestMethod.GET)
 	public String searchByKeyword(@RequestParam("keyword") String keyword, Model model) {
-	    List<FraudIndicator> fraudIndicator = fiDao.findByKeyword(keyword);
-	    if (fraudIndicator.isEmpty()) {
-	    	model.addAttribute("error", "No indicator found with keyword: " + keyword);
-	    } else { 
-	    	model.addAttribute("searchResults", fraudIndicator);
-	    }
-	    
-	    return "result";
+		List<FraudIndicator> fraudIndicator = fiDao.findByKeyword(keyword);
+		if (fraudIndicator.isEmpty()) {
+			model.addAttribute("error", "No indicator found with keyword: " + keyword);
+		} else {
+			model.addAttribute("searchResults", fraudIndicator);
+		}
+
+		return "result";
 	}
-	
+
+	// USER CHOICE - SINGLE INDICATOR ( user chooses on list.jsp -> sends to details )
+	@RequestMapping(path = "details.do", method = RequestMethod.GET)
+	public String viewDetails(@RequestParam("id") int id, Model model) {
+		FraudIndicator fraudIndicator = fiDao.findById(id);
+		if (fraudIndicator != null) {
+			model.addAttribute("fraudIndicator", fraudIndicator);
+		} else {
+			model.addAttribute("error", "No indicator found with ID: " + id);
+		}
+		return "details"; 
+	}
 
 	// LIST (ALL)
 	@RequestMapping(path = "list.do", method = RequestMethod.GET)
@@ -68,7 +82,7 @@ public class FraudIndicatorController {
 	@RequestMapping(path = "create.do", method = RequestMethod.POST)
 	public String create(FraudIndicator fi, Model model) {
 		FraudIndicator createdFi = fiDao.create(fi);
-		return "redirect:home.do";
+		return "redirect:list.do";
 	}
 
 	// UPDATE - GET
@@ -91,6 +105,6 @@ public class FraudIndicatorController {
 	public String delete(@RequestParam("id") int id, Model model) {
 		boolean isDeleted = fiDao.deleteById(id);
 		return "redirect:home.do";
-	} 
+	}
 
 }

@@ -1,7 +1,6 @@
 package com.skilldistillery.fraudindicator.data;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -18,7 +17,7 @@ public class FraudIndicatorDAOImpl implements FraudIndicatorDAO {
 
 	@PersistenceContext
 	private EntityManager em;
-	
+
 	@Override
 	public FraudIndicator findById(int fraudId) {
 		return em.find(FraudIndicator.class, fraudId);
@@ -27,13 +26,11 @@ public class FraudIndicatorDAOImpl implements FraudIndicatorDAO {
 	@Override
 	public List<FraudIndicator> findByKeyword(String keyword) {
 		String jpql = "SELECT fi FROM FraudIndicator fi WHERE fi.description LIKE :keyword";
-		return em.createQuery(jpql, FraudIndicator.class)
-				.setParameter("keyword", "%" + keyword + "%").getResultList();
+		return em.createQuery(jpql, FraudIndicator.class).setParameter("keyword", "%" + keyword + "%").getResultList();
 	}
-	
-	
+
 	@Override
-	public List<FraudIndicator> findAll() {
+	public List<FraudIndicator> findAll() { 
 		String jpql = "SELECT fi FROM FraudIndicator fi";
 		return em.createQuery(jpql, FraudIndicator.class).getResultList();
 	}
@@ -66,6 +63,5 @@ public class FraudIndicatorDAOImpl implements FraudIndicatorDAO {
 		}
 		return false;
 	}
-
 
 }
