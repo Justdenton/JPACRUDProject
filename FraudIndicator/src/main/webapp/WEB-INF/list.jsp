@@ -48,7 +48,7 @@
                     <tr>
                         <td>${fraudIndicator.description}</td>
                         <td>${fraudIndicator.category}</td>
-                        <td>${fraudIndicator.updateDate}</td>
+                        <td>${fraudIndicator.formattedUpdateDate}</td>
                         <td>
                             <a class="btn btn-info btn-sm" href="details.do?id=${fraudIndicator.id}">View Details</a>
                         </td>

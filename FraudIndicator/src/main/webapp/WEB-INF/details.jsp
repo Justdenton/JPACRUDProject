@@ -30,10 +30,10 @@
                 <dd class="col-sm-9">${fraudIndicator.category}</dd>
                 
                 <dt class="col-sm-3">Date Created</dt>
-                <dd class="col-sm-9">${fraudIndicator.createDate}</dd>
+                <dd class="col-sm-9">${fraudIndicator.formattedCreateDate}</dd>
                 
                 <dt class="col-sm-3">Date Last Modified</dt>
-                <dd class="col-sm-9">${fraudIndicator.updateDate}</dd>
+                <dd class="col-sm-9">${fraudIndicator.formattedUpdateDate}</dd>
             </dl>
 
             <div class="row mt-3">

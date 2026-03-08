@@ -1,6 +1,7 @@
 package com.skilldistillery.fraudindicator.entities;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import jakarta.persistence.Column;
@@ -13,6 +14,8 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "fraud_indicator")
 public class FraudIndicator {
+
+	private static final DateTimeFormatter DISPLAY_DATE_TIME = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -71,12 +74,20 @@ public class FraudIndicator {
 		this.createDate = createDate;
 	}
 
+	public String getFormattedCreateDate() {
+		return createDate != null ? createDate.format(DISPLAY_DATE_TIME) : "";
+	}
+
 	public LocalDateTime getUpdateDate() {
 		return updateDate;
 	}
 
 	public void setUpdateDate(LocalDateTime updateDate) {
 		this.updateDate = updateDate;
+	}
+
+	public String getFormattedUpdateDate() {
+		return updateDate != null ? updateDate.format(DISPLAY_DATE_TIME) : "";
 	}
 
 //	public Date getCreateDate() {
